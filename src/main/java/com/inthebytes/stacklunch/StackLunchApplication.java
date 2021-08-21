@@ -27,7 +27,7 @@ public interface StackLunchApplication {
 		}
 		
 		//TODO: Add appropriate web security beans 
-		beans.addAll((this.implementsUserLogin() ? 
+		beans.addAll((this.implementsLoginAndLogout() ? 
 				null : null));
 		
 		//Add Common Properties and Run Application
@@ -49,7 +49,7 @@ public interface StackLunchApplication {
 	
 	public abstract String baseEndpoint();
 	
-	public abstract Boolean implementsUserLogin();
+	public abstract Boolean implementsLoginAndLogout();
 	
 	public abstract Boolean integratesEmailNotification();
 	

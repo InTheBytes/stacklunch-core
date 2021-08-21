@@ -14,7 +14,6 @@ import com.inthebytes.stacklunch.security.authentication.StackLunchJwtProperties
 @EntityScan("com.inthebytes.stacklunch.object.entity")
 public class UniversalStackLunchConfiguration {
 	
-
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {

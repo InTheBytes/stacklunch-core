@@ -18,9 +18,15 @@ public interface StackLunchMapper {
 	Authorization convert(AuthorizationDto authorization);
 	
 	PasswordChangeDto convert(PasswordChange passwordChange);
-	PasswordChange convert(PasswordChangeDto passwordChange);
 	
 	ConfirmationDto convert(Confirmation confirmation);
-	Confirmation convert(ConfirmationDto confirmation);
-
+	
+	LocationDto convert(Location location);
+	Location convert(LocationDto location);
+	
+	FoodDto convert(Food location);
+	Food convert(FoodDto food);
+	
+	RestaurantDto convert(Restaurant restaurant);
+	Restaurant convert(RestaurantDto restaurant);
 }

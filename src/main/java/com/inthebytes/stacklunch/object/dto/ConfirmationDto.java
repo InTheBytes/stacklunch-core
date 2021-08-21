@@ -25,8 +25,4 @@ public class ConfirmationDto extends StackLunchDto {
 	public static ConfirmationDto convert(Confirmation entity) {
 		return getMapper().convert(entity);
 	}
-	
-	public Confirmation convert() {
-		return getMapper().convert(this);
-	}
 }

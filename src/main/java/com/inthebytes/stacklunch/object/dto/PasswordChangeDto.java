@@ -23,9 +23,4 @@ public class PasswordChangeDto extends StackLunchDto {
 	public static PasswordChangeDto convert(PasswordChange entity) {
 		return getMapper().convert(entity);
 	}
-	
-	public PasswordChange convert() {
-		return getMapper().convert(this);
-	}
-
 }
