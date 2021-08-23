@@ -1,6 +1,8 @@
 package com.inthebytes.stacklunch.object.entity;
 
 import java.io.Serializable;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -15,6 +17,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
+@Entity
 public class Location implements Serializable {
 	
 	private static final long serialVersionUID = -6095967423768532538L;
