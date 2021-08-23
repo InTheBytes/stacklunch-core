@@ -1,4 +1,4 @@
-package com.inthebytes.stacklunch.security.authentication;
+package com.inthebytes.stacklunch.service;
 
 import java.sql.Timestamp;
 

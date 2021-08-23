@@ -2,16 +2,16 @@ package com.inthebytes.stacklunch;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.inthebytes.stacklunch.security.SecurityConfiguration;
 import com.inthebytes.stacklunch.security.authentication.StackLunchJwtProperties;
 
 @Configuration
 @EntityScan("com.inthebytes.stacklunch.object.entity")
+@ComponentScan
 public class UniversalStackLunchConfiguration {
 	
 	@Bean
@@ -27,10 +27,4 @@ public class UniversalStackLunchConfiguration {
 			}
 		};
 	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager() throws Exception {
-		return new SecurityConfiguration().authenticationManagerBean();
-	}
-
 }

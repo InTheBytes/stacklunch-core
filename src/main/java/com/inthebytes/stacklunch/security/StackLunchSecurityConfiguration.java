@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 import com.inthebytes.stacklunch.StackLunchApplication;
 import com.inthebytes.stacklunch.repository.AuthorizationRepository;
 import com.inthebytes.stacklunch.security.authentication.LoginFilter;
-import com.inthebytes.stacklunch.security.authentication.LogoutService;
+import com.inthebytes.stacklunch.service.LogoutService;
 
 @Configuration
 @EnableWebSecurity
