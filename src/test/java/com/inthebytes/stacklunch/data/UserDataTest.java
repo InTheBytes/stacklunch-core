@@ -18,17 +18,15 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
+import com.inthebytes.stacklunch.data.role.Role;
+import com.inthebytes.stacklunch.data.role.RoleDto;
+import com.inthebytes.stacklunch.data.role.RoleRepository;
+import com.inthebytes.stacklunch.data.user.User;
+import com.inthebytes.stacklunch.data.user.UserDto;
+import com.inthebytes.stacklunch.data.user.UserRegistrationDto;
+import com.inthebytes.stacklunch.data.user.UserRepository;
 
-import com.inthebytes.stacklunch.DataTestConfiguration;
-import com.inthebytes.stacklunch.object.dto.RoleDto;
-import com.inthebytes.stacklunch.object.dto.UserDto;
-import com.inthebytes.stacklunch.object.dto.UserRegistrationDto;
-import com.inthebytes.stacklunch.object.entity.Role;
-import com.inthebytes.stacklunch.object.entity.User;
-import com.inthebytes.stacklunch.repository.RoleRepository;
-import com.inthebytes.stacklunch.repository.UserRepository;
-
-@ContextConfiguration(classes = DataTestConfiguration.class)
+@ContextConfiguration(classes = UserDataTest.class)
 @DataJpaTest
 @EnableJpaRepositories(basePackageClasses = {UserRepository.class, RoleRepository.class})
 @EntityScan(basePackageClasses = {User.class, Role.class})
@@ -79,7 +77,6 @@ public class UserDataTest {
 	@Order(2)
 	public void testCreateRoleAndMappings() {
 		role.setName("Test");
-		role.setRoleId("role-id");
 		Role entity = roleRepo.save(role.convert());
 		role = RoleDto.convert(entity);
 		assertEquals("Test", role.getName());
@@ -151,7 +148,7 @@ public class UserDataTest {
 	@Order(7)
 	public void testGetRole() {
 		Optional<Role> entity = roleRepo.findById(role.getRoleId());
-		Optional<Role> empty = roleRepo.findById("Bad-ID");
+		Optional<Role> empty = roleRepo.findById(100);
 		assertTrue(entity.isPresent());
 		assertFalse(empty.isPresent());
 		RoleDto testRole = RoleDto.convert(entity.get());

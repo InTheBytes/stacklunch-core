@@ -1,0 +1,30 @@
+package com.inthebytes.stacklunch.data.location;
+
+import com.inthebytes.stacklunch.data.StackLunchDto;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode(callSuper = false)
+public class LocationDto extends StackLunchDto {
+
+	private String locationId;
+	private String street;
+	private String unit;
+	private String city;
+	private String state;
+	private Integer zipCode;
+	
+	public static LocationDto convert(Location entity) {
+		return getMapper().convert(entity);
+	}
+	
+	public Location convert() {
+		return getMapper().convert(this);
+	}
+}

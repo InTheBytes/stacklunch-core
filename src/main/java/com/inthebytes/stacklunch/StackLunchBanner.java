@@ -1,8 +1,18 @@
 package com.inthebytes.stacklunch;
 
-public class StackLunchBanner {
+import java.io.PrintStream;
+
+import org.springframework.boot.Banner;
+import org.springframework.core.env.Environment;
+
+public class StackLunchBanner implements Banner {
 	
-	public static String logoBanner() {
+	@Override
+	public void printBanner(Environment environment, Class<?> sourceClass, PrintStream out) {
+		out.print(logoBanner() + titleBanner());
+	}
+	
+	public String logoBanner() {
 		return "\n\n\n        .#  //(((##%%%%%%%%%%%%% #%          \n"
 				+ "        %  / .(((((((((((((((((((%, %,       \n"
 				+ "       ((. .*  /(((/,.       .,* #%%%%%      \n"
@@ -24,7 +34,7 @@ public class StackLunchBanner {
 				+ "               %%,  (  ,%%%";
 	}
 
-	public static String titleBanner() {
+	public String titleBanner() {
 		return "\n"
 				+ "  ____  _             _      _                     _     \n"
 				+ " / ___|| |_ __ _  ___| | __ | |   _   _ _ __   ___| |__  \n"
