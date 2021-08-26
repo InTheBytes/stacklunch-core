@@ -1,5 +1,7 @@
 package com.inthebytes.stacklunch.data.user;
 
+import org.springframework.data.domain.Page;
+
 import com.inthebytes.stacklunch.data.StackLunchDto;
 import com.inthebytes.stacklunch.data.role.RoleDto;
 
@@ -29,5 +31,9 @@ public class UserDto extends StackLunchDto {
 	
 	public User convert() {
 		return getMapper().convert(this);
+	}
+	
+	public static Page<UserDto> convert(Page<User> entities) {
+		return entities.map((x) -> convert(x));
 	}
 }

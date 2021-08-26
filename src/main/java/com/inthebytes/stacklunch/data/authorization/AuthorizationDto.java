@@ -2,6 +2,8 @@ package com.inthebytes.stacklunch.data.authorization;
 
 import java.sql.Timestamp;
 
+import org.springframework.data.domain.Page;
+
 import com.inthebytes.stacklunch.data.StackLunchDto;
 
 import lombok.EqualsAndHashCode;
@@ -26,4 +28,7 @@ public class AuthorizationDto extends StackLunchDto {
 		return getMapper().convert(this);
 	}
 
+	public static Page<AuthorizationDto> convert(Page<Authorization> entities) {
+		return entities.map((x) -> convert(x));
+	}
 }

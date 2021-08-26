@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 
-public interface StackLunchApplication {
+public abstract class StackLunchApplication {
 	
-	static ApplicationContext run(Class<?> app, String[] args) {
+	public static ConfigurableApplicationContext run(Class<?> app, String[] args) {
 		SpringApplication application = new SpringApplication(app, UniversalStackLunchConfiguration.class);
 		Properties props = new Properties();
 		props.putAll(propertiesMap());
@@ -18,7 +18,7 @@ public interface StackLunchApplication {
 		return application.run(args);
 	}
 	
-	static Map<String, String> propertiesMap() {
+	private static Map<String, String> propertiesMap() {
 		Map<String, String> props = new HashMap<String, String>(10);
 		props.put("spring.jpa.database-platform", "org.hibernate.dialect.MySQL8Dialect");
 		props.put("spring.datasource.driver-class-name", "com.mysql.cj.jdbc.Driver");

@@ -1,6 +1,4 @@
-package com.inthebytes.stacklunch.data.passchange;
-
-import java.sql.Timestamp;
+package com.inthebytes.stacklunch.data.driver;
 
 import org.springframework.data.domain.Page;
 
@@ -16,21 +14,24 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class PasswordChangeDto extends StackLunchDto {
+public class DriverDto extends StackLunchDto {
 	
-	private String confirmationToken;
-	private Timestamp createdTime;
+	private String driverId;
 	private UserDto user;
+	private String vehicleId;
+	private String financialId;
+	private Integer status;
 	
-	public static PasswordChangeDto convert(PasswordChange entity) {
+	public static DriverDto convert(Driver entity) {
 		return getMapper().convert(entity);
 	}
 	
-	public PasswordChange convert() {
+	public Driver convert() {
 		return getMapper().convert(this);
 	}
 	
-	public static Page<PasswordChangeDto> convert(Page<PasswordChange> entities) {
+	public static Page<DriverDto> convert(Page<Driver> entities) {
 		return entities.map((x) -> convert(x));
 	}
+
 }

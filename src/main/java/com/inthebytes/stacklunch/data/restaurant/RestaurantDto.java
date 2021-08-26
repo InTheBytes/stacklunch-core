@@ -3,6 +3,8 @@ package com.inthebytes.stacklunch.data.restaurant;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.data.domain.Page;
+
 import com.inthebytes.stacklunch.data.StackLunchDto;
 import com.inthebytes.stacklunch.data.food.Food;
 import com.inthebytes.stacklunch.data.location.Location;
@@ -33,5 +35,9 @@ public class RestaurantDto extends StackLunchDto {
 	
 	public Restaurant convert() {
 		return getMapper().convert(this);
+	}
+	
+	public static Page<RestaurantDto> convert(Page<Restaurant> entities) {
+		return entities.map((x) -> convert(x));
 	}
 }

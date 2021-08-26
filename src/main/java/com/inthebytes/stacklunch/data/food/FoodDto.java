@@ -1,5 +1,7 @@
 package com.inthebytes.stacklunch.data.food;
 
+import org.springframework.data.domain.Page;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.inthebytes.stacklunch.data.StackLunchDto;
 import com.inthebytes.stacklunch.data.restaurant.Restaurant;
@@ -29,6 +31,10 @@ public class FoodDto extends StackLunchDto {
 	
 	public Food convert() {
 		return getMapper().convert(this);
+	}
+	
+	public static Page<FoodDto> convert(Page<Food> entities) {
+		return entities.map((x) -> convert(x));
 	}
 
 }

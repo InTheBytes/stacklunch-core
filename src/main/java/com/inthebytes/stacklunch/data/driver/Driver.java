@@ -5,8 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.inthebytes.stacklunch.data.user.User;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,5 +33,13 @@ public class Driver implements Serializable {
 	    strategy = "org.hibernate.id.UUIDGenerator"
 	)
 	private String driverId;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	private String vehicleId;
+	private String financialId;
+	private Integer status;
 
 }

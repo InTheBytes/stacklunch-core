@@ -13,7 +13,7 @@ import com.inthebytes.stacklunch.data.authorization.Authorization;
 import com.inthebytes.stacklunch.data.authorization.AuthorizationRepository;
 
 
-public abstract class SecurityConfig extends WebSecurityConfigurerAdapter {
+public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired(required = false)
 	AuthorizationRepository authRepo;

@@ -1,9 +1,8 @@
-package com.inthebytes.stacklunch.data;
+package com.inthebytes.stacklunch.datatest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
@@ -15,6 +14,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,11 +28,11 @@ import com.inthebytes.stacklunch.data.user.UserDto;
 import com.inthebytes.stacklunch.data.user.UserRegistrationDto;
 import com.inthebytes.stacklunch.data.user.UserRepository;
 
-@ContextConfiguration(classes = UserDataTest.class)
+@ContextConfiguration(classes = DataTestConfiguration.class)
 @DataJpaTest
-@EnableJpaRepositories(basePackageClasses = {UserRepository.class, RoleRepository.class})
-@EntityScan(basePackageClasses = {User.class, Role.class})
 @TestMethodOrder(OrderAnnotation.class)
+@EntityScan(basePackageClasses = {User.class, Role.class})
+@EnableJpaRepositories(basePackageClasses = {UserRepository.class, RoleRepository.class})
 @Commit
 public class UserDataTest {
 	
@@ -67,14 +69,6 @@ public class UserDataTest {
 	
 	@Test
 	@Order(1)
-	public void testMappersWithNull() {
-		assertNull(RoleDto.convert(null));
-		assertNull(UserDto.convert(null));
-		assertNull(UserRegistrationDto.convert(null));
-	}
-	
-	@Test
-	@Order(2)
 	public void testCreateRoleAndMappings() {
 		role.setName("Test");
 		Role entity = roleRepo.save(role.convert());
@@ -90,7 +84,7 @@ public class UserDataTest {
 	}
 	
 	@Test
-	@Order(3)
+	@Order(2)
 	public void testCreateUserAndMappings() {
 		UserRegistrationDto user = makeTestUser();
 		assertTrue(user.equals(makeTestUser()));
@@ -115,6 +109,18 @@ public class UserDataTest {
 		assertTrue(result.equals(testUser));
 		assertEquals(result.toString(), testUser.toString());
 		assertEquals(result.hashCode(), testUser.hashCode());
+	}
+	
+	@Test
+	@Order(3)
+	public void testRoleAndUserPaginationMappings() {
+		Pageable pageable = PageRequest.of(0, 1);
+		Page<Role> roles = roleRepo.findAll(pageable);
+		Page<User> users = userRepo.findAll(pageable);
+		assertNotNull(UserDto.convert(users).getContent().get(0));
+		assertNotNull(RoleDto.convert(roles).getContent().get(0));
+		assertEquals(1, UserDto.convert(users).getContent().size());
+		assertEquals(1, RoleDto.convert(roles).getContent().size());
 	}
 	
 	@Test

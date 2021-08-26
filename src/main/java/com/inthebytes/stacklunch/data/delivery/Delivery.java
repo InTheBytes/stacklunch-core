@@ -1,6 +1,7 @@
 package com.inthebytes.stacklunch.data.delivery;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.inthebytes.stacklunch.data.driver.Driver;
 import com.inthebytes.stacklunch.data.order.Order;
 
 import lombok.EqualsAndHashCode;
@@ -39,5 +41,13 @@ public class Delivery implements Serializable {
 	@JsonIgnore
 	@JoinColumn(name = "order_id")
 	private Order order;
+	
+	@OneToOne
+	@JoinColumn(name = "driver_id")
+	private Driver driver;
+	
+	private Timestamp startTime;
+	private Timestamp pickupTime;
+	private Timestamp endTime;
 
 }

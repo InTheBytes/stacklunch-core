@@ -1,5 +1,7 @@
 package com.inthebytes.stacklunch.data.role;
 
+import org.springframework.data.domain.Page;
+
 import com.inthebytes.stacklunch.data.StackLunchDto;
 
 import lombok.EqualsAndHashCode;
@@ -22,6 +24,10 @@ public class RoleDto extends StackLunchDto {
 	
 	public Role convert() {
 		return getMapper().convert(this);
+	}
+	
+	public static Page<RoleDto> convert(Page<Role> entities) {
+		return entities.map((x) -> convert(x));
 	}
 
 }
