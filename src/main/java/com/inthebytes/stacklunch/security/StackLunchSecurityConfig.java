@@ -40,7 +40,6 @@ public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdap
 	}
     
     @Bean
-    @ConditionalOnMissingBean(AuthorizationRepository.class)
     public JpaRepositoryFactoryBean<AuthorizationRepository, Authorization, String> authorizationRepository() {
     	return new JpaRepositoryFactoryBean<AuthorizationRepository, Authorization, String>(AuthorizationRepository.class);
     }
