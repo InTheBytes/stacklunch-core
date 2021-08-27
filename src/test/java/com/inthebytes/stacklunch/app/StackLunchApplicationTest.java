@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.inthebytes.stacklunch.StackLunchApplication;
 import com.inthebytes.stacklunch.UniversalStackLunchConfiguration;
-import com.inthebytes.stacklunch.stub.StubConfiguration;
+import com.inthebytes.stacklunch.app.stub.StubConfiguration;
 
 public class StackLunchApplicationTest {
 	

@@ -1,4 +1,4 @@
-package com.inthebytes.stacklunch.testapp;
+package com.inthebytes.stacklunch.app.testapp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +14,7 @@ public class TestSecurityConfig extends StackLunchSecurityConfig {
 	public HttpSecurity addSecurityConfigs(HttpSecurity security) throws Exception {
 		return security.authorizeRequests()
 				.antMatchers("/tests/any/**").permitAll()
-				.antMatchers("/tests/users/**").authenticated()
+				.antMatchers("/tests/users/**", "/tests/details/**").authenticated()
 				.antMatchers("/tests/admins/**").hasRole("ADMIN")
 				.antMatchers("/tests/customers/**").hasRole("CUSTOMER")
 				.antMatchers("/tests/restaurants/**").hasRole("RESTAURANT")

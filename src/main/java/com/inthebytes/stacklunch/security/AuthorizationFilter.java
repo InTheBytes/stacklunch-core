@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.inthebytes.stacklunch.data.authorization.AuthorizationRepository;
@@ -78,11 +79,12 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 					authorities.add(authority);
 					UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userName, null, authorities);
 					request.setAttribute("username", userName);
+					request.setAttribute("role", role.toLowerCase().replace("role_", ""));
 					return auth;
 				}
-			} catch (TokenExpiredException ex) {
+			} catch (JWTVerificationException ex) {
 				return null;
-			}
+			} 
 			return null;
 		}
 		return null;

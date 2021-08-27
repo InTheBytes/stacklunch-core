@@ -1,7 +1,8 @@
-package com.inthebytes.stacklunch.testapp;
+package com.inthebytes.stacklunch.app.testapp;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,14 @@ public class TestController {
 	@GetMapping("/users")
 	public ResponseEntity<String> testAuthenticated() {
 		return makeResponse("Authenticated Works");
+	}
+	
+	@GetMapping("/details")
+	public ResponseEntity<String> testRequestAttributes(
+			@RequestAttribute String username,
+			@RequestAttribute String role
+			) {
+		return makeResponse("Username: " + username + ", Role: " + role);
 	}
 	
 	@GetMapping("/admins")

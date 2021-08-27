@@ -1,6 +1,5 @@
 package com.inthebytes.stacklunch.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
@@ -15,15 +14,12 @@ import com.inthebytes.stacklunch.data.authorization.AuthorizationRepository;
 
 public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired(required = false)
-	AuthorizationRepository authRepo;
-	
 	public abstract HttpSecurity addSecurityConfigs(HttpSecurity security) throws Exception;
 
     @Override
     protected void configure(HttpSecurity security) throws Exception
     {
-        security = security.csrf().disable() // TODO: REMOVE ON PROD
+        security = security.csrf().disable()
             .cors()
             
             .and()
@@ -31,8 +27,7 @@ public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdap
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			
 			.and()
-			.addFilter(new AuthorizationFilter(authenticationManager(), 
-					(authRepo == null) ? authorizationRepository().getObject() : authRepo));
+			.addFilter(new AuthorizationFilter(authenticationManager(), authorizationRepository().getObject()));
 			
         security = addSecurityConfigs(security);
         security.httpBasic();

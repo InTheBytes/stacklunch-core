@@ -1,7 +1,8 @@
 package com.inthebytes.stacklunch.service;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import software.amazon.awssdk.services.ses.SesClient;
@@ -22,7 +23,7 @@ public class EmailSendService {
 	                 String bodyHTML,
 	                 String link,
 	                 String button
-	) {
+	) throws JSONException {
 		client = SesClient.builder().build();
 		JSONObject templateData = new JSONObject();
 		templateData.put("title", subject)

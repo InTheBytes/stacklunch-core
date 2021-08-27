@@ -105,11 +105,7 @@
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>ses</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20210307</version>
-        </dependency>
+
 	</dependencies>
 	
 	<dependencyManagement>
@@ -126,14 +122,6 @@
 
 	<build>
 		<plugins>
-		
-	        <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-javadoc-plugin</artifactId>
-	            <configuration>
-	                <source>1.8</source>
-	            </configuration>
-	        </plugin>
 			
 			<plugin>
     			<groupId>org.apache.maven.plugins</groupId>

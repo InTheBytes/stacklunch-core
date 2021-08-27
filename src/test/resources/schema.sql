@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `food` (
   `food_id` VARCHAR(36) PRIMARY KEY NOT NULL,
   `restaurant_id` VARCHAR(36) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `price` DECIMAL(10,0) UNSIGNED NOT NULL,
+  `price` DECIMAL(10,2) UNSIGNED NOT NULL,
   `description` VARCHAR(100) NOT NULL,
   CONSTRAINT `fk_food_restaurant_id`
     FOREIGN KEY (`restaurant_id`)

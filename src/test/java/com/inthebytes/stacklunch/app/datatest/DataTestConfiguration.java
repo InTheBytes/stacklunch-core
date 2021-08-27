@@ -1,14 +1,14 @@
-package com.inthebytes.stacklunch.datatest;
+package com.inthebytes.stacklunch.app.datatest;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan("com.inthebytes.stacklunch.data")
+@PropertySource("data.properties")
 public class DataTestConfiguration {
 
 }

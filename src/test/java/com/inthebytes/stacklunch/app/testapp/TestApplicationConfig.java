@@ -1,13 +1,11 @@
-package com.inthebytes.stacklunch.testapp;
+package com.inthebytes.stacklunch.app.testapp;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Import;
 
 import com.inthebytes.stacklunch.UniversalStackLunchConfiguration;
 
-@Configuration
-@ComponentScan
+@SpringBootConfiguration
 @Import(UniversalStackLunchConfiguration.class)
 public class TestApplicationConfig {
 
