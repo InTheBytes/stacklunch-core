@@ -1,6 +1,5 @@
 package com.inthebytes.stacklunch.security;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -161,7 +161,6 @@ public class SecurityAndCorsTest {
 			.andExpect(content().string("Username: test-restaurant, Role: restaurant"));
 	}
 
-
 	
 	@Test
 	public void shouldReturnUnauthorizedForLoggedOutTokens() throws Exception {
