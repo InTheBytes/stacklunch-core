@@ -40,7 +40,7 @@ public class Food implements Serializable {
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "restaurant_id", referencedColumnName ="restaurant_id")
+	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 
 }
