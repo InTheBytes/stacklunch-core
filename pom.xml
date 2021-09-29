@@ -12,7 +12,7 @@
 	
 	<groupId>com.inthebytes</groupId>
 	<artifactId>stacklunch-core</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>stacklunch-core</name>
 	<description>Core spring dependency for stacklunch projects</description>
 	

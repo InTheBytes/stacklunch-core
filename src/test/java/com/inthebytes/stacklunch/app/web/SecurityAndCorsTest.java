@@ -22,7 +22,7 @@ import com.inthebytes.stacklunch.app.testapp.TestSecurityConfig;
 import com.inthebytes.stacklunch.security.JwtProperties;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK,
-		classes = {TestApplicationConfig.class, TestController.class, TestSecurityConfig.class})
+		classes = {TestApplicationConfig.class, TestController.class, TestSecurityConfig.class, JwtProperties.class})
 @AutoConfigureMockMvc
 @EnableAutoConfiguration
 public class SecurityAndCorsTest {
