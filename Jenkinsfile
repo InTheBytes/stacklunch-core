@@ -8,12 +8,7 @@ pipeline {
     stages {
         stage('Clean and Test target') {
             steps {
-                sh 'mvn clean test'
-            }
-        }
-        stage('Test and Package') {
-            steps {
-                sh 'mvn package'
+                sh 'mvn test'
             }
         }
         stage('Code Analysis: Sonarqube') {
@@ -28,14 +23,9 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
-        stage('Upload to S3 Bucket') {
+        stage('Install Dependency') {
             steps {
-                dir('/var/lib/jenkins/workspace/Core-Library/target') {
-                    withAWS(region:'us-east-2',credentials:'aws-ecr-creds') {
-                        s3Delete(bucket:"stacklunch-core-library", path:'');
-                        s3Upload(bucket:"stacklunch-core-library", path:'', includePathPattern:'**/*.jar');
-                    }   
-                } 
+            	sh 'mvn install'
             }
         }
     }
