@@ -18,8 +18,7 @@ public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdap
     @Override
     protected void configure(HttpSecurity security) throws Exception
     {
-        security = security.csrf().disable()
-            .cors()
+        security = security.csrf().disable().cors()
             
             .and()
             .sessionManagement()

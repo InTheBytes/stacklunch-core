@@ -4,7 +4,7 @@ import org.mapstruct.factory.Mappers;
 
 public abstract class StackLunchDto {
 
-	protected static StackLunchMapper getMapper() {
+	public static StackLunchMapper getMapper() {
 		return Mappers.getMapper(StackLunchMapper.class);
 	}
 }

@@ -30,11 +30,6 @@ public class StackLunchApplicationTest {
 	@Test
 	public void testPropertiesExist() {
 		assertTrue(context.getEnvironment().containsProperty("spring.jpa.database-platform"));
-		assertTrue(context.getEnvironment().containsProperty("spring.datasource.driver-class-name"));
-		assertTrue(context.getEnvironment().containsProperty("spring.datasource.name"));
-		assertTrue(context.getEnvironment().containsProperty("spring.datasource.url"));
-		assertTrue(context.getEnvironment().containsProperty("spring.datasource.username"));
-		assertTrue(context.getEnvironment().containsProperty("spring.datasource.password"));
 		assertTrue(context.getEnvironment().containsProperty("stacklunch.email.sender"));
 	}
 	

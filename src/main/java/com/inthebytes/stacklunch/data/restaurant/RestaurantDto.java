@@ -6,9 +6,9 @@ import java.util.Set;
 import org.springframework.data.domain.Page;
 
 import com.inthebytes.stacklunch.data.StackLunchDto;
-import com.inthebytes.stacklunch.data.food.Food;
-import com.inthebytes.stacklunch.data.location.Location;
-import com.inthebytes.stacklunch.data.user.User;
+import com.inthebytes.stacklunch.data.food.FoodDto;
+import com.inthebytes.stacklunch.data.location.LocationDto;
+import com.inthebytes.stacklunch.data.user.UserDto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,9 +25,9 @@ public class RestaurantDto extends StackLunchDto {
 	private String name;
 	private String cuisine;
 
-	private Location location;
-	private List<Food> foods;
-	private Set<User> manager;
+	private LocationDto location;
+	private List<FoodDto> foods;
+	private Set<UserDto> manager;
 	
 	public static RestaurantDto convert(Restaurant entity) {
 		return getMapper().convert(entity);
