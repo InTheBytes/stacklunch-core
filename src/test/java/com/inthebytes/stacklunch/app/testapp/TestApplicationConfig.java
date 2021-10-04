@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import com.inthebytes.stacklunch.UniversalStackLunchConfiguration;
 
 @SpringBootConfiguration
-@Import(UniversalStackLunchConfiguration.class)
+@Import(value = UniversalStackLunchConfiguration.class)
 public class TestApplicationConfig {
 
 }

@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public abstract class StackLunchApplication {
 	
 	public static ConfigurableApplicationContext run(Class<?> app, String[] args) {
-		SpringApplication application = new SpringApplication(UniversalStackLunchConfiguration.class, app);
+		SpringApplication application = new SpringApplication(UniversalStackLunchConfiguration.class, StackLunchDataSource.class, app);
 		Properties props = new Properties();
 		props.putAll(propertiesMap());
 		application.setDefaultProperties(props);
