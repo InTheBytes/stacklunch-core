@@ -70,8 +70,8 @@ class RoleDataTest {
 
 	@Test
 	void testDeleteBehavior() {
+		roleRepo.deleteById(1);
 		assertThrows(DataIntegrityViolationException.class,() -> {
-			roleRepo.deleteById(1);
 			roleRepo.flush();
 		});
 	}

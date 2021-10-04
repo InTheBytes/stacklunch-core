@@ -15,6 +15,7 @@ public class UserRegistrationDto extends UserDto {
 	
 	private String password;
 
+	@Override
 	public User convert() {
 		return StackLunchDtoMapper.mapper.convert(this);
 	}

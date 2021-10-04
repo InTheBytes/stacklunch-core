@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clean and Test target') {
             steps {
-                sh 'mvn test'
+                sh 'mvn verify'
             }
         }
         stage('Code Analysis: Sonarqube') {
