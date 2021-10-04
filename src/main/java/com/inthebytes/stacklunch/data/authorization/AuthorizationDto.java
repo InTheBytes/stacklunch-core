@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,21 +14,21 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class AuthorizationDto extends StackLunchDto {
+@EqualsAndHashCode
+public class AuthorizationDto {
 	
 	private String token;
 	private Timestamp expirationDate;
 	
 	public static AuthorizationDto convert(Authorization entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public Authorization convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 
 	public static Page<AuthorizationDto> convert(Page<Authorization> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(AuthorizationDto::convert);
 	}
 }

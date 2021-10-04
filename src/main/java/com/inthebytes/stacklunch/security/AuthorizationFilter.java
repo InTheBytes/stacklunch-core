@@ -9,8 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,8 +25,6 @@ import com.inthebytes.stacklunch.data.authorization.AuthorizationRepository;
 
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
-	
-	Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
 	
 	private AuthorizationRepository authRepo;
 
@@ -73,7 +69,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 				String userName = jwt.getSubject();
 			
 				if (role != null && userName != null) {
-					List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+					List<GrantedAuthority> authorities = new ArrayList<>();
 					GrantedAuthority authority = new SimpleGrantedAuthority(role);
 					authorities.add(authority);
 					UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userName, null, authorities);

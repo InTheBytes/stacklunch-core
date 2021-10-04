@@ -39,6 +39,6 @@ public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdap
     
     @Bean
     public JpaRepositoryFactoryBean<AuthorizationRepository, Authorization, String> authorizationRepository() {
-    	return new JpaRepositoryFactoryBean<AuthorizationRepository, Authorization, String>(AuthorizationRepository.class);
+    	return new JpaRepositoryFactoryBean<>(AuthorizationRepository.class);
     }
 }

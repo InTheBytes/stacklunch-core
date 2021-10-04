@@ -26,13 +26,13 @@ import com.inthebytes.stacklunch.data.role.RoleRepository;
 @DataJpaTest
 @EntityScan(basePackageClasses = Role.class)
 @EnableJpaRepositories(basePackageClasses = RoleRepository.class)
-public class RoleDataTest {
+class RoleDataTest {
 	
 	@Autowired
 	RoleRepository roleRepo;
 	
 	@Test
-	public void testGetRoleAndDtoMethods() {
+	void testGetRoleAndDtoMethods() {
 		Optional<Role> role = roleRepo.findById(1);
 		assertTrue(role.isPresent());
 		RoleDto dto = new RoleDto();
@@ -47,7 +47,7 @@ public class RoleDataTest {
 	}
 	
 	@Test
-	public void testRolePages() {
+	void testRolePages() {
 		Page<Role> roles = roleRepo.findAll(PageRequest.of(0, 4));
 		assertFalse(roles.getContent().contains(null));
 		Page<RoleDto> dtos = RoleDto.convert(roles);
@@ -59,7 +59,7 @@ public class RoleDataTest {
 	}
 	
 	@Test
-	public void testCreateRole() {
+	void testCreateRole() {
 		RoleDto newRole = new RoleDto();
 		newRole.setName("test-role");
 		Role role = roleRepo.save(newRole.convert());
@@ -69,7 +69,7 @@ public class RoleDataTest {
 	}
 
 	@Test
-	public void testDeleteBehavior() {
+	void testDeleteBehavior() {
 		assertThrows(DataIntegrityViolationException.class,() -> {
 			roleRepo.deleteById(1);
 			roleRepo.flush();
@@ -77,7 +77,7 @@ public class RoleDataTest {
 	}
 	
 	@Test
-	public void testUpdateBehavior() {
+	void testUpdateBehavior() {
 		Optional<Role> oldRole = roleRepo.findById(1);
 		Role newRole = oldRole.get();
 		newRole.setName("new-admin-role");

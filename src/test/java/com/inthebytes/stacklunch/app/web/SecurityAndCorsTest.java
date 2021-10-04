@@ -25,7 +25,7 @@ import com.inthebytes.stacklunch.security.JwtProperties;
 		classes = {TestApplicationConfig.class, TestController.class, TestSecurityConfig.class, JwtProperties.class})
 @AutoConfigureMockMvc
 @EnableAutoConfiguration
-public class SecurityAndCorsTest {
+class SecurityAndCorsTest {
 	
 	@Autowired
 	MockMvc mock;
@@ -47,7 +47,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testCorsConfigurations() throws Exception {
+	void testCorsConfigurations() throws Exception {
 		mock.perform(options("/tests/any")
 				.header("Access-Control-Request-Method", "GET")
 				.header("Origin", "https://not-our-website.com")
@@ -60,7 +60,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testPermitAll() throws Exception {
+	void testPermitAll() throws Exception {
 		mock.perform(get("/tests/any"))
 			.andExpect(status().isOk())
 			.andExpect(content().string("Permit All Works"));
@@ -73,7 +73,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testAuthenticated() throws Exception {
+	void testAuthenticated() throws Exception {
 		mock.perform(get("/tests/users")).andExpect(status().isUnauthorized());
 		
 		mock.perform(get("/tests/users")
@@ -83,7 +83,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testAdminEndpoint() throws Exception {
+	void testAdminEndpoint() throws Exception {
 		mock.perform(get("/tests/admins")).andExpect(status().isUnauthorized());
 		
 		mock.perform(get("/tests/admins")
@@ -97,7 +97,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testCustomerEndpoint() throws Exception {
+	void testCustomerEndpoint() throws Exception {
 		mock.perform(get("/tests/customers")).andExpect(status().isUnauthorized());
 		
 		mock.perform(get("/tests/customers")
@@ -111,7 +111,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testDriverEndpoint() throws Exception {
+	void testDriverEndpoint() throws Exception {
 		mock.perform(get("/tests/drivers")).andExpect(status().isUnauthorized());
 		
 		mock.perform(get("/tests/drivers")
@@ -125,7 +125,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testRestaurantEndpoint() throws Exception {
+	void testRestaurantEndpoint() throws Exception {
 		mock.perform(get("/tests/restaurants")).andExpect(status().isUnauthorized());
 		
 		mock.perform(get("/tests/restaurants")
@@ -139,7 +139,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void testRequestAttributesFromToken() throws Exception {
+	void testRequestAttributesFromToken() throws Exception {
 		mock.perform(get("/tests/details")
 				.header(JwtProperties.HEADER_STRING, makeJwtToken("test-driver", "driver"))
 				).andExpect(status().isOk())
@@ -163,14 +163,14 @@ public class SecurityAndCorsTest {
 
 	
 	@Test
-	public void shouldReturnUnauthorizedForLoggedOutTokens() throws Exception {
+	void shouldReturnUnauthorizedForLoggedOutTokens() throws Exception {
 		mock.perform(get("/tests/users")
 				.header(JwtProperties.HEADER_STRING, "Bearer logged-out-token")
 				).andExpect(status().isUnauthorized());
 	}
 
 	@Test
-	public void shouldReturnUnauthorizedForExpiredTokens() throws Exception {
+	void shouldReturnUnauthorizedForExpiredTokens() throws Exception {
 		mock.perform(get("/tests/users")
 				.header(JwtProperties.HEADER_STRING, 
 						SecurityAndCorsTest.makeJwtWithDate("test-user", "test", new Date(System.currentTimeMillis() - 1000)))
@@ -178,7 +178,7 @@ public class SecurityAndCorsTest {
 	}
 	
 	@Test
-	public void shouldReturnUnauthorizedWithBadSecret() throws Exception {
+	void shouldReturnUnauthorizedWithBadSecret() throws Exception {
 		mock.perform(get("/tests/users")
 				.header(JwtProperties.HEADER_STRING, 
 						SecurityAndCorsTest.makeJwtWithDateAndSecret(

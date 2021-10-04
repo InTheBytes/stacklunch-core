@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 import com.inthebytes.stacklunch.data.driver.DriverDto;
 import com.inthebytes.stacklunch.data.order.OrderDto;
 
@@ -16,8 +16,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class DeliveryDto extends StackLunchDto {
+@EqualsAndHashCode
+public class DeliveryDto {
 
 	private String deliveryId;
 	private OrderDto order;
@@ -27,14 +27,14 @@ public class DeliveryDto extends StackLunchDto {
 	private Timestamp endTime;
 	
 	public static DeliveryDto convert(Delivery entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public Delivery convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 	
 	public static Page<DeliveryDto> convert(Page<Delivery> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(DeliveryDto::convert);
 	}
 }

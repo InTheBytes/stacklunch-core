@@ -1,6 +1,9 @@
 package com.inthebytes.stacklunch.security;
 
 public class JwtProperties {
+	
+	private JwtProperties() {}
+	
 	public static final String SECRET = System.getenv("SL_SECRET");
 	public static final int EXPIRATION_TIME = 3600000 * 2; //2 hours
 	public static final String TOKEN_PREFIX = "Bearer ";

@@ -2,7 +2,7 @@ package com.inthebytes.stacklunch.data.location;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class LocationDto extends StackLunchDto {
+@EqualsAndHashCode
+public class LocationDto {
 
 	private String locationId;
 	private String street;
@@ -23,14 +23,14 @@ public class LocationDto extends StackLunchDto {
 	private Integer zipCode;
 	
 	public static LocationDto convert(Location entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public Location convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 	
 	public static Page<LocationDto> convert(Page<Location> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(LocationDto::convert);
 	}
 }

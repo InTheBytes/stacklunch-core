@@ -2,7 +2,7 @@ package com.inthebytes.stacklunch.data.user;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 import com.inthebytes.stacklunch.data.role.RoleDto;
 
 import lombok.EqualsAndHashCode;
@@ -13,8 +13,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class UserDto extends StackLunchDto {
+@EqualsAndHashCode
+public class UserDto {
 
 	private String userId;
 	private RoleDto role;
@@ -26,14 +26,14 @@ public class UserDto extends StackLunchDto {
 	private Boolean active;
 	
 	public static UserDto convert(User entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public User convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 	
 	public static Page<UserDto> convert(Page<User> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(UserDto::convert);
 	}
 }

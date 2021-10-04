@@ -38,10 +38,10 @@ public interface StackLunchMapper {
 	Role convert(RoleDto role);
 	
 	UserDto convert(User user);
+	User convert(UserRegistrationDto user);
 	
 	@Mapping(target = "password", ignore = true)
 	User convert(UserDto user);
-	User convert(UserRegistrationDto user);
 
 	AuthorizationDto convert(Authorization authorization);
 	Authorization convert(AuthorizationDto authorization);

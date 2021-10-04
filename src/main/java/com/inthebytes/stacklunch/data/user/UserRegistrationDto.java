@@ -1,5 +1,7 @@
 package com.inthebytes.stacklunch.data.user;
 
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +16,6 @@ public class UserRegistrationDto extends UserDto {
 	private String password;
 
 	public User convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 }

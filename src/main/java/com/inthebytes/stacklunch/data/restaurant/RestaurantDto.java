@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 import com.inthebytes.stacklunch.data.food.FoodDto;
 import com.inthebytes.stacklunch.data.location.LocationDto;
 import com.inthebytes.stacklunch.data.user.UserDto;
@@ -18,8 +18,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class RestaurantDto extends StackLunchDto {
+@EqualsAndHashCode
+public class RestaurantDto {
 	
 	private String restaurantId;
 	private String name;
@@ -30,14 +30,14 @@ public class RestaurantDto extends StackLunchDto {
 	private Set<UserDto> manager;
 	
 	public static RestaurantDto convert(Restaurant entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public Restaurant convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 	
 	public static Page<RestaurantDto> convert(Page<Restaurant> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(RestaurantDto::convert);
 	}
 }

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDto;
+import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
 import com.inthebytes.stacklunch.data.user.UserDto;
 
 import lombok.EqualsAndHashCode;
@@ -15,22 +15,22 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper = false)
-public class PasswordChangeDto extends StackLunchDto {
+@EqualsAndHashCode
+public class PasswordChangeDto {
 	
 	private String confirmationToken;
 	private Timestamp createdTime;
 	private UserDto user;
 	
 	public static PasswordChangeDto convert(PasswordChange entity) {
-		return getMapper().convert(entity);
+		return StackLunchDtoMapper.mapper.convert(entity);
 	}
 	
 	public PasswordChange convert() {
-		return getMapper().convert(this);
+		return StackLunchDtoMapper.mapper.convert(this);
 	}
 	
 	public static Page<PasswordChangeDto> convert(Page<PasswordChange> entities) {
-		return entities.map((x) -> convert(x));
+		return entities.map(PasswordChangeDto::convert);
 	}
 }

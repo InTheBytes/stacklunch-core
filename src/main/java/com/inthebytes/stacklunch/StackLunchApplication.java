@@ -9,6 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 public abstract class StackLunchApplication {
 	
+	private StackLunchApplication() {}
+	
 	public static ConfigurableApplicationContext run(Class<?> app, String[] args) {
 		SpringApplication application = new SpringApplication(UniversalStackLunchConfiguration.class, StackLunchDataSource.class, app);
 		Properties props = new Properties();
@@ -19,7 +21,7 @@ public abstract class StackLunchApplication {
 	}
 	
 	private static Map<String, String> propertiesMap() {
-		Map<String, String> props = new HashMap<String, String>(10);
+		Map<String, String> props = new HashMap<>(10);
 		props.put("spring.jpa.database-platform", "org.hibernate.dialect.MySQL8Dialect");
 		props.put("spring.autoconfigure.exclude", "org.springframework.boot.autoconfigure.jdbx.DataSourceAutoConfiguration");
 		props.put("stacklunch.email.sender", System.getenv("SL_EMAIL"));
