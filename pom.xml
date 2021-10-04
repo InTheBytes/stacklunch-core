@@ -20,8 +20,7 @@
 	
 	<properties>
 		<java.version>1.8</java.version>
-		
-		<jacoco.version>0.8.7</jacoco.version>
+	
 	    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 	    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 	    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
@@ -154,6 +153,12 @@
         			</annotationProcessorPaths>
     			</configuration>
 			</plugin>
+			
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.0.2155</version>
+            </plugin>
 			
 			<plugin>
 				<groupId>org.jacoco</groupId>
