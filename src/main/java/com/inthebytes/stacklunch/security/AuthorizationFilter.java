@@ -57,7 +57,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 			token = token.replace(JwtProperties.TOKEN_PREFIX, "");
 		}
 		
-		if (!authRepo.findById(token).isPresent()) {
+		if (!(authRepo.findById(token).isPresent())) {
 			try {
 				DecodedJWT jwt = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET))
 						.build()

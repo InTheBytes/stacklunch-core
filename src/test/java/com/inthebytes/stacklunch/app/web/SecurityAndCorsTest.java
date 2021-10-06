@@ -1,10 +1,12 @@
 package com.inthebytes.stacklunch.app.web;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.inthebytes.stacklunch.app.testapp.TestApplicationConfig;
 import com.inthebytes.stacklunch.app.testapp.TestController;
 import com.inthebytes.stacklunch.app.testapp.TestSecurityConfig;
+import com.inthebytes.stacklunch.data.authorization.Authorization;
+import com.inthebytes.stacklunch.data.authorization.AuthorizationRepository;
 import com.inthebytes.stacklunch.security.JwtProperties;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK,
@@ -26,6 +30,9 @@ import com.inthebytes.stacklunch.security.JwtProperties;
 @AutoConfigureMockMvc
 @EnableAutoConfiguration
 class SecurityAndCorsTest {
+	
+	@Autowired
+	AuthorizationRepository authRepo;
 	
 	@Autowired
 	MockMvc mock;
@@ -39,9 +46,10 @@ class SecurityAndCorsTest {
 	}
 	
 	public static String makeJwtWithDateAndSecret(String username, String role, Date expiration, byte[] secret) {
+		role = (role != null) ? "ROLE_" + role.toUpperCase() : role; 
 		return JwtProperties.TOKEN_PREFIX + JWT.create()
 			.withSubject(username)
-			.withClaim(JwtProperties.AUTHORITIES_KEY, "ROLE_" + role.toUpperCase())
+			.withClaim(JwtProperties.AUTHORITIES_KEY, role)
 			.withExpiresAt(expiration)
 			.sign(Algorithm.HMAC512(secret));
 	}
@@ -67,7 +75,7 @@ class SecurityAndCorsTest {
 		
 		mock.perform(
 				get("/tests/any")
-				.header(JwtProperties.HEADER_STRING, makeJwtToken("test", "admin"))
+				.header(JwtProperties.HEADER_STRING, makeJwtToken("test", "A"))
 				).andExpect(status().isOk())
 				.andExpect(content().string("Permit All Works"));
 	}
@@ -164,8 +172,14 @@ class SecurityAndCorsTest {
 	
 	@Test
 	void shouldReturnUnauthorizedForLoggedOutTokens() throws Exception {
+		Authorization loggedOutToken = new Authorization();
+		loggedOutToken.setToken("logged-out-token");
+		loggedOutToken.setExpirationDate(new Timestamp(System.currentTimeMillis()));
+		
+		authRepo.save(loggedOutToken);
+		
 		mock.perform(get("/tests/users")
-				.header(JwtProperties.HEADER_STRING, "Bearer logged-out-token")
+				.header(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + "logged-out-token")
 				).andExpect(status().isUnauthorized());
 	}
 
@@ -186,6 +200,17 @@ class SecurityAndCorsTest {
 								"test", 
 								new Date(System.currentTimeMillis() - 1000),
 								"BadSecret".getBytes()))
+				).andExpect(status().isUnauthorized());
+	}
+	
+	@Test
+	void testAuthenticationWithNullRoleOrUsername() throws Exception {
+		mock.perform(get("/tests/users")
+				.header(JwtProperties.HEADER_STRING, makeJwtToken("test", null))
+				).andExpect(status().isUnauthorized());
+		
+		mock.perform(get("/tests/users")
+				.header(JwtProperties.HEADER_STRING, makeJwtToken(null, "customer"))
 				).andExpect(status().isUnauthorized());
 	}
 }
