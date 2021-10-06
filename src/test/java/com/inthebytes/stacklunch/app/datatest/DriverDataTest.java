@@ -114,8 +114,8 @@ class DriverDataTest {
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertNotEquals(testDto.hashCode(), (new DriverDto()).hashCode());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new DriverDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new DriverDto());
 		
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new DriverDto()).toString());
@@ -129,8 +129,8 @@ class DriverDataTest {
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertNotEquals(testEntity.hashCode(), (new DriverDto()).hashCode());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Driver()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Driver());
 		
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new DriverDto()).toString());

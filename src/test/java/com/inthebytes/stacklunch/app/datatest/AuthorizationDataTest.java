@@ -87,8 +87,8 @@ class AuthorizationDataTest {
 	void testDtotHashCodeEqualsAndString() {
 		AuthorizationDto testDto = generateTestDto();
 		AuthorizationDto anotherDto = generateTestDto();
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new AuthorizationDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new AuthorizationDto());
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertNotEquals(testDto.hashCode(), (new AuthorizationDto()).hashCode());
 		assertEquals(testDto.toString(), anotherDto.toString());
@@ -99,8 +99,8 @@ class AuthorizationDataTest {
 	void testEntityHashCodeEqualsAndString() {
 		Authorization testEntity = generateTestEntity();
 		Authorization anotherEntity = generateTestEntity();
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Authorization()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Authorization());
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertNotEquals(testEntity.hashCode(), (new Authorization()).hashCode());
 		assertEquals(testEntity.toString(), anotherEntity.toString());

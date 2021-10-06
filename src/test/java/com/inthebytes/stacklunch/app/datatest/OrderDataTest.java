@@ -161,8 +161,8 @@ class OrderDataTest {
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new OrderDto()).toString());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new OrderDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new OrderDto());
 	}
 	
 	@Test
@@ -176,8 +176,8 @@ class OrderDataTest {
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new Order()).toString());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Order()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Order());
 	}
 	
 	@Test

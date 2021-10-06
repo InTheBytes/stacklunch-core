@@ -154,14 +154,14 @@ class UserDataTest {
 		UserDto testDto = generateTestUserDtoWithoutPassword();
 		UserRegistrationDto testRegDto = generateTestUserDtoWithPassword();
 		
-		assertTrue(testDto.equals(generateTestUserDtoWithoutPassword()));
-		assertFalse(testDto.equals(new UserDto()));
+		assertEquals(testDto, generateTestUserDtoWithoutPassword());
+		assertNotEquals(testDto, new UserDto());
 		
-		assertTrue(testRegDto.equals(generateTestUserDtoWithPassword()));
-		assertFalse(testRegDto.equals(new UserRegistrationDto()));
+		assertEquals(testRegDto, generateTestUserDtoWithPassword());
+		assertNotEquals(testRegDto, new UserRegistrationDto());
 		
-		assertFalse(testRegDto.equals(testDto));
-		assertFalse(testDto.equals(testRegDto));
+		assertNotEquals(testRegDto, testDto);
+		assertNotEquals(testDto, testRegDto);
 	}
 	
 	@Test
@@ -175,8 +175,8 @@ class UserDataTest {
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new User()).toString());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new User()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new User());
 	}
 	
 	@Test

@@ -102,8 +102,8 @@ class ConfirmationDataTest {
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertNotEquals(testDto.hashCode(), (new ConfirmationDto()).hashCode());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new ConfirmationDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new ConfirmationDto());
 		
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new ConfirmationDto()).toString());
@@ -117,8 +117,8 @@ class ConfirmationDataTest {
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertNotEquals(testEntity.hashCode(), (new Confirmation()).hashCode());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Confirmation()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Confirmation());
 		
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new Confirmation()).toString());

@@ -144,8 +144,8 @@ class TransactionDataTest {
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new TransactionDto()).toString());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new TransactionDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new TransactionDto());
 	}
 	
 	@Test
@@ -159,8 +159,8 @@ class TransactionDataTest {
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new Transaction()).toString());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Transaction()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Transaction());
 		
 	}
 	

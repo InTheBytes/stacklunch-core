@@ -130,8 +130,8 @@ class DeliveryDataTest {
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertNotEquals(testDto.hashCode(), (new DeliveryDto()).hashCode());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new DeliveryDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new DeliveryDto());
 		
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new DeliveryDto()).toString());
@@ -145,8 +145,8 @@ class DeliveryDataTest {
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertNotEquals(testEntity.hashCode(), (new DeliveryDto()).hashCode());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Delivery()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Delivery());
 		
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new DeliveryDto()).toString());	

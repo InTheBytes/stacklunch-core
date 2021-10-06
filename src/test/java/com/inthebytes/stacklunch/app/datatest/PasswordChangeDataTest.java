@@ -109,11 +109,11 @@ class PasswordChangeDataTest {
 		
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertEquals(testDto.toString(), anotherDto.toString());
-		assertTrue(testDto.equals(anotherDto));
+		assertEquals(testDto, anotherDto);
 		
 		assertNotEquals(testDto.hashCode(), (new PasswordChangeDto()).hashCode());
 		assertNotEquals(testDto.toString(), (new PasswordChangeDto()).toString());
-		assertFalse(testDto.equals(new PasswordChangeDto()));
+		assertNotEquals(testDto, new PasswordChangeDto());
 	}
 	
 	@Test
@@ -123,11 +123,11 @@ class PasswordChangeDataTest {
 		
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertEquals(testEntity.toString(), anotherEntity.toString());
-		assertTrue(testEntity.equals(anotherEntity));
+		assertEquals(testEntity, anotherEntity);
 		
 		assertNotEquals(testEntity.hashCode(), (new PasswordChange()).hashCode());
 		assertNotEquals(testEntity.toString(), (new PasswordChange()).toString());
-		assertFalse(testEntity.equals(new PasswordChange()));
+		assertNotEquals(testEntity, new PasswordChange());
 	}
 	
 	@Test

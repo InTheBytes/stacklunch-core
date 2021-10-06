@@ -98,11 +98,11 @@ class LocationDataTest {
 		
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
 		assertEquals(testDto.toString(), anotherDto.toString());
-		assertTrue(testDto.equals(anotherDto));
+		assertEquals(testDto, anotherDto);
 		
 		assertNotEquals(testDto.hashCode(), (new LocationDto()).hashCode());
 		assertNotEquals(testDto.toString(), (new LocationDto()).hashCode());
-		assertFalse(testDto.equals(new LocationDto()));
+		assertNotEquals(testDto, new LocationDto());
 	}
 	
 	@Test
@@ -112,11 +112,11 @@ class LocationDataTest {
 		
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
 		assertEquals(testEntity.toString(), anotherEntity.toString());
-		assertTrue(testEntity.equals(anotherEntity));
+		assertEquals(testEntity, anotherEntity);
 		
 		assertNotEquals(testEntity.hashCode(), (new Location()).hashCode());
 		assertNotEquals(testEntity.toString(), (new Location()).hashCode());
-		assertFalse(testEntity.equals(new Location()));
+		assertNotEquals(testEntity, new Location());
 	}
 	
 	@Test

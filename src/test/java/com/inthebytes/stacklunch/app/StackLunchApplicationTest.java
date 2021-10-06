@@ -13,7 +13,7 @@ import com.inthebytes.stacklunch.StackLunchApplication;
 import com.inthebytes.stacklunch.UniversalStackLunchConfiguration;
 import com.inthebytes.stacklunch.app.stub.StubConfiguration;
 
-public class StackLunchApplicationTest {
+class StackLunchApplicationTest {
 	
 	private static ConfigurableApplicationContext context;
 
@@ -28,13 +28,13 @@ public class StackLunchApplicationTest {
 	}
 	
 	@Test
-	public void testPropertiesExist() {
+	void testPropertiesExist() {
 		assertTrue(context.getEnvironment().containsProperty("spring.jpa.database-platform"));
 		assertTrue(context.getEnvironment().containsProperty("spring.jpa.properties.hibernate.jdbc.time_zone"));
 	}
 	
 	@Test
-	public void testForUniversalConfiguration() {
+	void testForUniversalConfiguration() {
 		assertThatCode(() -> context.getBean(UniversalStackLunchConfiguration.class))
 			.doesNotThrowAnyException();
 		assertNotNull(context.getBean(UniversalStackLunchConfiguration.class));

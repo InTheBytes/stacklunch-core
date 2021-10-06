@@ -109,11 +109,11 @@ class FoodDataTest {
 		FoodDto anotherDto = generateTestFoodDto();
 		
 		assertEquals(testDto.hashCode(), anotherDto.hashCode());
-		assertTrue(testDto.equals(anotherDto));
+		assertEquals(testDto, anotherDto);
 		assertEquals(testDto.toString(), anotherDto.toString());
 		
 		assertNotEquals(testDto.hashCode(), (new FoodDto()).hashCode());
-		assertFalse(testDto.equals(new FoodDto()));
+		assertNotEquals(testDto, new FoodDto());
 		assertNotEquals(testDto.toString(), (new FoodDto()).toString());
 	}
 	
@@ -123,11 +123,11 @@ class FoodDataTest {
 		Food anotherEntity = generateTestFoodEntity();
 		
 		assertEquals(testEntity.hashCode(), anotherEntity.hashCode());
-		assertTrue(testEntity.equals(anotherEntity));
+		assertEquals(testEntity, anotherEntity);
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		
 		assertNotEquals(testEntity.hashCode(), (new Food()).hashCode());
-		assertFalse(testEntity.equals(new Food()));
+		assertNotEquals(testEntity, new Food());
 		assertNotEquals(testEntity.toString(), (new Food()).toString());
 	}
 	

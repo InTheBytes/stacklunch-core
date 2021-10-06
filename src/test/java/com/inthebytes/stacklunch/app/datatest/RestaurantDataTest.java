@@ -134,8 +134,8 @@ class RestaurantDataTest {
 		assertEquals(testDto.toString(), anotherDto.toString());
 		assertNotEquals(testDto.toString(), (new RestaurantDto()).toString());
 		
-		assertTrue(testDto.equals(anotherDto));
-		assertFalse(testDto.equals(new RestaurantDto()));
+		assertEquals(testDto, anotherDto);
+		assertNotEquals(testDto, new RestaurantDto());
 	}
 	
 	@Test
@@ -149,8 +149,8 @@ class RestaurantDataTest {
 		assertEquals(testEntity.toString(), anotherEntity.toString());
 		assertNotEquals(testEntity.toString(), (new Restaurant()).toString());
 		
-		assertTrue(testEntity.equals(anotherEntity));
-		assertFalse(testEntity.equals(new Restaurant()));
+		assertEquals(testEntity, anotherEntity);
+		assertNotEquals(testEntity, new Restaurant());
 	}
 	
 	@Test
