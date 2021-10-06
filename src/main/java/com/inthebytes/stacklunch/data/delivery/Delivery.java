@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,6 +26,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
+@Table(name = "delivery")
 public class Delivery implements Serializable {
 	
 	private static final long serialVersionUID = 1397476994485720096L;
@@ -37,17 +39,17 @@ public class Delivery implements Serializable {
 	)
 	private String deliveryId;
 	
-	@OneToOne
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "driver_id")
 	private Driver driver;
 	
 	private Timestamp startTime;
 	private Timestamp pickupTime;
-	private Timestamp endTime;
+	private Timestamp deliverTime;
 
 }

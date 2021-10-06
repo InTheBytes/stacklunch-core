@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.inthebytes.stacklunch.data.delivery.Delivery;
 import com.inthebytes.stacklunch.data.location.Location;
 import com.inthebytes.stacklunch.data.restaurant.Restaurant;
 import com.inthebytes.stacklunch.data.user.User;
@@ -60,9 +59,6 @@ public class Order implements Serializable {
 			cascade = CascadeType.PERSIST, 
 			orphanRemoval = true)
 	private Set<OrderFood> foods;
-	
-	@OneToOne(mappedBy = "order", optional = true, cascade = CascadeType.PERSIST)
-	private Delivery delivery;
 	
 	private Integer status;
 	private Timestamp windowStart;

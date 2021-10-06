@@ -55,7 +55,9 @@ public interface StackLunchMapper {
 	LocationDto convert(Location location);
 	Location convert(LocationDto location);
 	
+	@Mapping(target = "restaurant.foods", ignore = true)
 	FoodDto convert(Food location);
+	@Mapping(target = "restaurant.foods", ignore = true)
 	Food convert(FoodDto food);
 	
 	RestaurantDto convert(Restaurant restaurant);

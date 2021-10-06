@@ -2,7 +2,7 @@ package com.inthebytes.stacklunch.data.driver;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
+import com.inthebytes.stacklunch.data.StackLunchDto;
 import com.inthebytes.stacklunch.data.user.UserDto;
 
 import lombok.EqualsAndHashCode;
@@ -13,8 +13,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
-public class DriverDto {
+@EqualsAndHashCode(callSuper = false)
+public class DriverDto extends StackLunchDto {
 	
 	private String driverId;
 	private UserDto user;
@@ -23,11 +23,11 @@ public class DriverDto {
 	private Integer status;
 	
 	public static DriverDto convert(Driver entity) {
-		return StackLunchDtoMapper.mapper.convert(entity);
+		return mapper.convert(entity);
 	}
 	
 	public Driver convert() {
-		return StackLunchDtoMapper.mapper.convert(this);
+		return mapper.convert(this);
 	}
 	
 	public static Page<DriverDto> convert(Page<Driver> entities) {

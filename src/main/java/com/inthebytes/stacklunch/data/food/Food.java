@@ -41,6 +41,8 @@ public class Food implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_id")
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	private Restaurant restaurant;
 
 }

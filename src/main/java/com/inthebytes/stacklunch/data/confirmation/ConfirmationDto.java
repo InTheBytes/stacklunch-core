@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import org.springframework.data.domain.Page;
 
-import com.inthebytes.stacklunch.data.StackLunchDtoMapper;
+import com.inthebytes.stacklunch.data.StackLunchDto;
 import com.inthebytes.stacklunch.data.user.UserDto;
 
 import lombok.EqualsAndHashCode;
@@ -15,8 +15,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
-public class ConfirmationDto {
+@EqualsAndHashCode(callSuper = false)
+public class ConfirmationDto extends StackLunchDto {
 
 	private String tokenId;
 	private String confirmationToken;
@@ -25,11 +25,11 @@ public class ConfirmationDto {
 	private UserDto user;
 	
 	public static ConfirmationDto convert(Confirmation entity) {
-		return StackLunchDtoMapper.mapper.convert(entity);
+		return mapper.convert(entity);
 	}
 	
 	public Confirmation convert() {
-		return StackLunchDtoMapper.mapper.convert(this);
+		return mapper.convert(this);
 	}
 	
 	public static Page<ConfirmationDto> convert(Page<Confirmation> entities) {
