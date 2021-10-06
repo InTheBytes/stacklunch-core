@@ -39,8 +39,7 @@ public class TransactionDto extends StackLunchDto {
 		return mapper.convert(this);
 	}
 	
-	public Page<TransactionDto> convert(Page<Transaction> entities) {
+	public static Page<TransactionDto> convert(Page<Transaction> entities) {
 		return entities.map(TransactionDto::convert);
 	}
-
 }

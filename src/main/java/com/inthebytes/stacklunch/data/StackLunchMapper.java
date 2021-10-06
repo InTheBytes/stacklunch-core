@@ -63,11 +63,9 @@ public interface StackLunchMapper {
 	RestaurantDto convert(Restaurant restaurant);
 	Restaurant convert(RestaurantDto restaurant);
 	
-	@Mapping(target = "order", ignore = true)
-	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "order.foods", ignore = true)
 	OrderFood convert(OrderFoodDto orderFood);
-	
-	@Mapping(target = "orderId", source = "id.orderId")
+	@Mapping(target = "order.foods", ignore = true)
 	OrderFoodDto convert(OrderFood orderFood);
 	
 	OrderDto convert(Order order);

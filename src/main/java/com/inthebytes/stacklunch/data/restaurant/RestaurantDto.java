@@ -1,6 +1,5 @@
 package com.inthebytes.stacklunch.data.restaurant;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Page;
@@ -26,7 +25,7 @@ public class RestaurantDto extends StackLunchDto {
 	private String cuisine;
 
 	private LocationDto location;
-	private List<FoodDto> foods;
+	private Set<FoodDto> foods;
 	private Set<UserDto> manager;
 	
 	public static RestaurantDto convert(Restaurant entity) {

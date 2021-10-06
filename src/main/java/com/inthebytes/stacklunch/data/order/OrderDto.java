@@ -6,7 +6,6 @@ import java.util.Set;
 import org.springframework.data.domain.Page;
 
 import com.inthebytes.stacklunch.data.StackLunchDto;
-import com.inthebytes.stacklunch.data.delivery.DeliveryDto;
 import com.inthebytes.stacklunch.data.location.LocationDto;
 import com.inthebytes.stacklunch.data.restaurant.RestaurantDto;
 import com.inthebytes.stacklunch.data.user.UserDto;
@@ -27,7 +26,6 @@ public class OrderDto extends StackLunchDto {
 	private RestaurantDto restaurant;
 	private LocationDto destination;
 	private Set<OrderFoodDto> foods;
-	private DeliveryDto delivery;
 	private Integer status;
 	private Timestamp windowStart;
 	private Timestamp windowEnd;

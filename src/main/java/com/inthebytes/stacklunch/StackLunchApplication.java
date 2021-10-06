@@ -21,10 +21,10 @@ public abstract class StackLunchApplication {
 	}
 	
 	private static Map<String, String> propertiesMap() {
-		Map<String, String> props = new HashMap<>(10);
+		Map<String, String> props = new HashMap<>(3);
 		props.put("spring.jpa.database-platform", "org.hibernate.dialect.MySQL8Dialect");
 		props.put("spring.autoconfigure.exclude", "org.springframework.boot.autoconfigure.jdbx.DataSourceAutoConfiguration");
-		props.put("stacklunch.email.sender", System.getenv("SL_EMAIL"));
+		props.put("spring.jpa.properties.hibernate.jdbc.time_zone", "UTC");
 		return props;
 	}
 }

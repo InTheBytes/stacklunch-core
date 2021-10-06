@@ -13,8 +13,9 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 public class OrderFoodDto {
 	
+	private OrderFoodKey id;
 	private FoodDto food;
-	private String orderId;
+	private OrderDto order;
 	private Integer quantity;
 
 }

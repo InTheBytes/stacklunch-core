@@ -1,4 +1,4 @@
-package com.inthebytes.stacklunch.app.datatest;
+package com.inthebytes.stacklunch.app.stub;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;

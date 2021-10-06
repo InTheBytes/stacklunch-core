@@ -51,12 +51,12 @@ public class Order implements Serializable {
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;
 	
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
 	@JoinColumn(name = "destination_id")
 	private Location destination;
 	
 	@OneToMany(mappedBy = "order",
-			cascade = CascadeType.PERSIST, 
+			cascade = CascadeType.MERGE, 
 			orphanRemoval = true)
 	private Set<OrderFood> foods;
 	

@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.inthebytes.stacklunch.app.stub.DataTestConfiguration;
 import com.inthebytes.stacklunch.data.role.Role;
 import com.inthebytes.stacklunch.data.role.RoleDto;
 import com.inthebytes.stacklunch.data.role.RoleRepository;

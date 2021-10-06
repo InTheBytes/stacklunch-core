@@ -38,6 +38,8 @@ public class OrderFood implements Serializable {
 	@JsonIgnore
 	@MapsId("orderId")
 	@JoinColumn(name = "order_id")
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	private Order order;
 	
 	@ManyToOne 

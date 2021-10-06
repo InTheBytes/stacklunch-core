@@ -36,7 +36,8 @@ VALUES ('restaurant-id-123', 'restaurant-location-id', 'Test Restaurant', 'Test'
 
 INSERT INTO `order` (order_id, user_id, restaurant_id, destination_id, status, window_start, window_end, special_instructions)
 VALUES 
-('order-id-123', 'customer-id-123', 'restaurant-id-123', 'destination-location-id', 1, '2021-01-01 01:00:00', '2021-01-01 02:00:00', 'Test the order table'); 
+('order-id-123', 'customer-id-123', 'restaurant-id-123', 'destination-location-id', 1, '2021-01-01 01:00:00', '2021-01-01 02:00:00', 'Test the order table'),
+('order-id-345', 'customer-id-123', 'restaurant-id-123', 'destination-location-id', 0, '2021-01-01 01:00:00', '2021-01-01 02:00:00', 'Test for adding to transaction table');
 
 
 INSERT INTO delivery (delivery_id, order_id, driver_id, start_time, pickup_time, deliver_time)
@@ -58,8 +59,8 @@ VALUES ('order-id-123', 'food-id-123', 1), ('order-id-123', 'food-id-456', 2);
 
 
 INSERT INTO password_change (confirmation_token, user_id, created_time)
-VALUES ('password-change-token', 'admin-id-123', NOW());
+VALUES ('password-change-token', 'admin-id-123', '2021-01-01 01:05:00');
 
     
 INSERT INTO transaction (transaction_id, stripe_id, order_id, subtotal, tax, fee, discount, tip, total, payment_time)
-VALUES ('transaction-id-123', 'stripe-id-123', 'order-id-123', 7.48, 0.22, 1.40, 0.50, 1.50, 10.00, '2021-01-01 01:10:00');
+VALUES ('transaction-id-123', 'stripe-id-123', 'order-id-123', 6.38, 0.22, 1.40, 0.50, 1.50, 10.00, '2021-01-01 01:10:00');
