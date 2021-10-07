@@ -2,7 +2,6 @@ package com.inthebytes.stacklunch.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,12 +29,6 @@ public abstract class StackLunchSecurityConfig extends WebSecurityConfigurerAdap
         security = addSecurityConfigs(security);
         security.httpBasic();
     }
-    
-    @Override
-    @Bean
-	public AuthenticationManager authenticationManager() throws Exception {
-	    return super.authenticationManagerBean();
-	}
     
     @Bean
     public JpaRepositoryFactoryBean<AuthorizationRepository, Authorization, String> authorizationRepository() {
